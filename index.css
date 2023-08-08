@@ -1,0 +1,238 @@
+html {
+  --color-background: #fff;
+  --color-text: #000;
+  --color-text-light: lightgray;
+  --color-button-start: #0557ff;
+  --color-button-stop: #f00;
+  --color-button-text: #fff;
+}
+@media (prefers-color-scheme: dark) {
+  html {
+    --color-background: #000213;
+    --color-text: #a5a8d2;
+    --color-text-light: #444766;
+    --color-button-start: #0557ff;
+    --color-button-stop: #f00;
+    --color-button-text: #d8d8d8;
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: var(--color-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.RandomPicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-family: "Helvetica", sans-serif;
+}
+.RandomPicker__choice {
+  display: flex;
+  align-content: center;
+  margin: 0;
+  margin-bottom: 1em;
+  color: var(--color-text);
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+.RandomPicker__button {
+  display: block;
+  padding: 0.8em 1.6em;
+  min-width: 160px;
+  color: var(--color-button-text);
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 0;
+  border-radius: 4em;
+  background-color: var(--color-button-start);
+  user-select: none;
+  cursor: pointer;
+  transition: background-color 250ms ease-in-out, color 150ms ease-in-out;
+}
+.RandomPicker__button--stop {
+  background-color: var(--color-button-stop);
+}
+.RandomPicker__button--reset {
+  color: var(--color-text);
+  font-size: 14px;
+  text-transform: lowercase;
+  background-color: inherit;
+}
+.RandomPicker__button--reset[disabled] {
+  color: var(--color-text-light);
+  text-decoration: line-through;
+  cursor: not-allowed;
+}
+.RandomPicker__controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.RandomPicker__controls > *:not(:last-child) {
+  margin-bottom: 16px;
+}
+
+.app__navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  position: fixed;
+  z-index: 200;
+}
+.app__navbar-logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.app__navbar-logo img {
+  margin-left: 4em;
+  width: 250px;
+  cursor: pointer;
+}
+@media screen and (min-width: 2000px) {
+  .app__navbar-logo img {
+    width: 180px;
+    height: 20px;
+  }
+}
+.app__navbar-links {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+.app__navbar-links li {
+  margin: 0 1rem;
+  font-size: 0.95em;
+  cursor: pointer;
+  flex-direction: column;
+}
+.app__navbar-links li div {
+  width: 5px;
+  height: 5px;
+  background: transparent;
+  border-radius: 50%;
+  margin-bottom: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.app__navbar-links li button {
+  color: var(--gray-color);
+  text-decoration: none;
+  flex-direction: column;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.app__navbar-links li button:hover {
+  color: var(--secondary-color);
+}
+.app__navbar-links li:hover div {
+  background-color: var(--secondary-color);
+}
+@media screen and (max-width: 900px) {
+  .app__navbar-links {
+    display: none;
+  }
+}
+.app__navbar-menu {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-color);
+}
+.app__navbar-menu svg {
+  width: 70%;
+  height: 70%;
+  color: var(--white-color);
+}
+.app__navbar-menu div {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 500;
+  padding: 1rem;
+  width: 80%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  background: url(../../assets/bgWhite.png);
+  background-color: var(--white-color);
+  background-size: cover;
+  background-repeat: repeat;
+  box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+}
+.app__navbar-menu div svg {
+  width: 35px;
+  height: 35px;
+  color: var(--secondary-color);
+  margin: 0.5rem 1rem;
+}
+.app__navbar-menu div ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.app__navbar-menu div li {
+  margin: 1rem;
+}
+.app__navbar-menu div li button {
+  color: var(--gray-color);
+  text-decoration: none;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.app__navbar-menu div li button:hover {
+  color: var(--secondary-color);
+}
+@media screen and (min-width: 900px) {
+  .app__navbar-menu div {
+    display: none;
+  }
+}
+@media screen and (min-width: 900px) {
+  .app__navbar-menu {
+    display: none;
+  }
+}
